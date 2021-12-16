@@ -65,7 +65,7 @@ class VGG(nn.Module):
         return x.double()
         
 def train(trainloader, net, criterion, optimizer, device):
-    for epoch in range(1):  # loop over the dataset multiple times
+    for epoch in range(20):  # loop over the dataset multiple times
         start = time.time()
         running_loss = 0.0
         for i, (images, labels) in enumerate(trainloader):
