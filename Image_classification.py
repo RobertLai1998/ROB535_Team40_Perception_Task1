@@ -115,7 +115,7 @@ def valid(validloader, net, device):
 
 def test(testSet, net, device, transform):
 
-  name = 'drive/MyDrive/test_labels.csv'
+  name = 'test_labels.csv'
   with open(name, 'w') as f:
       writer = csv.writer(f, delimiter=',', lineterminator='\n')
       writer.writerow(['guid/image', 'label'])
@@ -179,12 +179,12 @@ transform = transforms.Compose([
     ])
 
 # Seperate training set and validation set
-trainSetAll = carData('drive/MyDrive/rob535-fall2021-final-project-data/trainval/', 'drive/MyDrive/trainval_labels.csv', transform)
+trainSetAll = carData('rob535-fall2021-final-project-data/trainval/', 'trainval_labels.csv', transform)
 nTrain = round(len(trainSetAll) / 10 * 9)
 nValid = round(len(trainSetAll) - len(trainSetAll) / 10 * 9)
 trainSet, validSet = random_split(trainSetAll, [nTrain, nValid])
 
-testSet = carData_test('drive/MyDrive/rob535-fall2021-final-project-data/test/*/*_image.jpg',transform)
+testSet = carData_test('rob535-fall2021-final-project-data/test/*/*_image.jpg',transform)
 
 trainLoader = DataLoader(trainSet, batch_size = 75, shuffle = True)
 validLoader = DataLoader(validSet, batch_size = 50, shuffle = True)
